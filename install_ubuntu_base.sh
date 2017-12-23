@@ -16,7 +16,7 @@ echo
 echo "========================================================================"
 echo "# INSTALANDO UBUNTU RESTRICTED EXTRAS"
 echo "========================================================================"
-sudo apt update && sudo apt install ubuntu-restricted-extras
+sudo apt update && sudo apt install ubuntu-restricted-extras -y
 
 echo
 echo "========================================================================"
