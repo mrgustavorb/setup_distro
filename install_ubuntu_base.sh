@@ -22,7 +22,7 @@ echo
 echo "========================================================================"
 echo "# INSTALANDO SNAP"
 echo "========================================================================"
-sudo apt install snapd snapd-xdg-open
+sudo apt install snapd snapd-xdg-open -y
 
 
 echo
@@ -121,7 +121,7 @@ echo
 echo "========================================================================"
 echo "# INSTALANDO PGADMIN"
 echo "========================================================================"
-sudo apt update && sudo apt install pgadmin3
+sudo apt update && sudo apt install pgadmin3 -y
 
 
 echo
@@ -152,10 +152,10 @@ echo
 echo "========================================================================"
 echo "# INSTALANDO VLC"
 echo "========================================================================"
-sudo apt update && sudo apt install vlc
+sudo apt update && sudo apt install vlc -y 
 
 echo
 echo "========================================================================"
 echo "# REMOVENDO PACOTES NÃO UTILIZADOS"
 echo "========================================================================"
-sudo apt autoremoveu
+sudo apt autoremove
