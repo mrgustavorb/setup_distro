@@ -1,10 +1,9 @@
 RUBY_VERSION="2.4.3" # Use the recent ruby version: https://www.ruby-lang.org/pt/downloads/
-RAILS_VERSION="5.1.4" # Use the recent ruby version: https://rubygems.org/gems/rails/versions
-NODE_VERSION="8.9.1"
+RAILS_VERSION="5.1.4" # Use the recent rails version: https://rubygems.org/gems/rails/versions
+NODE_VERSION="8.9.1" # Use the recent node version: 
 MYSQL_PASSWORD="soeusei"
-GIT_USER_NAME="Gustavo Santiago"
-GIT_USER_EMAIL="gustavo@gmail.com"
-
+GIT_USER_NAME="Example"
+GIT_USER_EMAIL="example@example.org"
 
 
 echo
@@ -12,6 +11,18 @@ echo "========================================================================"
 echo "# ATUALIZANDO O SISTEMA OPERACIONAL"
 echo "========================================================================"
 sudo apt update && sudo apt upgrade -y
+
+echo
+echo "========================================================================"
+echo "# INSTALANDO UBUNTU RESTRICTED EXTRAS"
+echo "========================================================================"
+sudo apt update && sudo apt install ubuntu-restricted-extras
+
+echo
+echo "========================================================================"
+echo "# INSTALANDO SNAP"
+echo "========================================================================"
+sudo apt install snapd snapd-xdg-open
 
 
 echo
@@ -21,6 +32,7 @@ echo "========================================================================"
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb -O chrome.deb
 \sudo dpkg -i chrome.deb
 sudo apt install -f -y
+
 
 echo
 echo "========================================================================"
@@ -33,7 +45,6 @@ git config --global user.name "${GIT_USER_NAME}"
 git config --global user.email "${GIT_USER_EMAIL}"
 
 
-
 echo
 echo "========================================================================"
 echo "# INSTALANDO DEPENDENCIAS DO RVM"
@@ -41,7 +52,6 @@ echo "========================================================================"
 sudo apt install -y git-core curl zlib1g-dev build-essential libssl-dev libreadline-dev libyaml-dev \
                         libsqlite3-dev sqlite3 libxml2-dev libcurl4-openssl-dev python-software-properties \
                         libffi-dev nodejs libgdbm-dev libncurses5-dev automake libtool bison libxslt1-dev
-
 
 
 echo
@@ -54,7 +64,6 @@ source ~/.rvm/scripts/rvm
 rvm requirements
 
 
-
 echo
 echo "========================================================================"
 echo "# INSTALANDO RUBY"
@@ -65,16 +74,13 @@ touch ~/.gemrc
 echo 'gem: --no-rdoc --no-ri' >> ~/.gemrc
 
 
-
 echo
 echo "======================================================================="
 echo "# INSTALANDO YARN"
 echo "========================================================================"
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt update
-sudo apt install yarn -y
-
+sudo apt update && sudo apt install yarn -y
 
 
 echo
@@ -82,9 +88,7 @@ echo "========================================================================"
 echo "# INSTALANDO NODE"
 echo "========================================================================"
 curl -sL https://deb.nodesource.com/setup_${NODE_VERSION} | sudo -E bash -
-\sudo apt update
-sudo apt install nodejs -y
-
+\sudo apt update && sudo apt install nodejs -y
 
 
 echo
@@ -92,7 +96,6 @@ echo "========================================================================"
 echo "# INSTALANDO RAILS"
 echo "========================================================================"
 gem install rails -v ${RAILS_VERSION}
-
 
 
 echo
@@ -105,25 +108,20 @@ sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again p
 sudo apt install mysql-server mysql-client libmysqlclient-dev -y
 
 
-
 echo
 echo "========================================================================"
 echo "# INSTALANDO POSTGRES"
 echo "========================================================================"
 sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ xenial-pgdg main' > /etc/apt/sources.list.d/pgdg.list"
 wget --quiet -O - http://apt.postgresql.org/pub/repos/apt/ACCC4CF8.asc | sudo apt-key add -
-\sudo apt update
-sudo apt install postgresql-common
-sudo apt install postgresql-9.6 libpq-dev
-
+\sudo apt update && sudo apt install postgresql-common postgresql-9.6 libpq-dev
 
 
 echo
 echo "========================================================================"
 echo "# INSTALANDO PGADMIN"
 echo "========================================================================"
-sudo apt update
-sudo apt install pgadmin3
+sudo apt update && sudo apt install pgadmin3
 
 
 echo
@@ -135,12 +133,29 @@ wget https://dev.mysql.com/get/Downloads/MySQLGUITools/mysql-workbench-community
 sudo apt -f install -y 
 
 
-
 echo
 echo "========================================================================"
 echo "# INSTALANDO OH-MY-ZSH"
 echo "========================================================================"
-sudo apt update
-sudo apt install zsh -y
+sudo apt update && sudo apt install zsh -y
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
+
+
+echo
+echo "========================================================================"
+echo "# INSTALANDO SPOTIFY"
+echo "========================================================================"
+sudo apt update && sudo snap install spotify -y
+
+echo
+echo "========================================================================"
+echo "# INSTALANDO VLC"
+echo "========================================================================"
+sudo apt update && sudo apt install vlc
+
+echo
+echo "========================================================================"
+echo "# REMOVENDO PACOTES NÃO UTILIZADOS"
+echo "========================================================================"
+sudo apt autoremoveu
