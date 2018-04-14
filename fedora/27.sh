@@ -9,11 +9,46 @@ read -p "What's your email(for git settings)?: " git_user_email
 # echo "========================================================================"
 sudo dnf update
 
+# echo "========================================================================"
+# echo "# INSTALANDO RPM REFUSION(THIRD PARTY'S SOFTWARES)"
+# echo "========================================================================"
+sudo dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
+
+# echo "========================================================================"
+# echo "# INSTALANDO CODECS"
+# echo "========================================================================"
+sudo dnf -y install gstreamer-plugins-base gstreamer1-plugins-base gstreamer-plugins-bad gstreamer-plugins-ugly gstreamer1-plugins-ugly gstreamer-plugins-good-extras gstreamer1-plugins-good-extras gstreamer1-plugins-bad-freeworld ffmpeg gstreamer-ffmpeg
+
+# echo "========================================================================"
+# echo "# INSTALANDO DROPBOX"
+# echo "========================================================================"
+sudo dnf install https://www.dropbox.com/download?dl=packages/fedora/nautilus-dropbox-2015.10.28-1.fedora.x86_64.rpm
+
+# echo "========================================================================"
+# echo "# INSTALANDO TEAMVIEWER"
+# echo "========================================================================"
+sudo rpm --import https://dl.tvcdn.de/download/linux/signature/TeamViewer2017.asc
+wget https://download.teamviewer.com/download/teamviewer.i686.rpm
+sudo dnf install -y teamviewer.i686.rpm
+
+# echo
+# echo "========================================================================"
+# echo "# INSTALANDO STACER"
+# echo "========================================================================"
+wget https://github.com/oguzhaninan/Stacer/releases/download/v1.0.8/stacer-1.0.8_x64.rpm
+sudo dnf install -y stacer-1.0.8_x64.rpm
+
+# echo
+# echo "========================================================================"
+# echo "# INSTALANDO QBITTORRENT"
+# echo "========================================================================"
+sudo dnf install -y qbittorrent
+
 # echo
 # echo "========================================================================"
 # echo "# INSTALANDO SNAP"
 # echo "========================================================================"
-sudo apt install -y snapd
+sudo dnf install -y snapd
 sudo ln -s /var/lib/snapd/snap /snap
 
 # echo
